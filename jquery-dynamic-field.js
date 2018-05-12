@@ -5,12 +5,10 @@
  *
  * @repository https://github.com/danielpjr/jquery-dynamic-field
  *
- * @dependencies jQuery Masked Input Plugin
- *				 http://digitalbush.com/projects/masked-input-plugin/#license)
+ * @dependencies [Masked Input Plugin for jQuery] https://github.com/digitalBush/jquery.maskedinput
+ * @dependencies [jQuery maskMoney] https://github.com/plentz/jquery-maskmoney
  *
- * @credits Bubelbub
- * 			https://bootsnipp.com/snippets/featured/dynamic-form-fields-add-amp-remove-bs3
- *			https://github.com/Bubelbub
+ * @credits [Bubelbub] https://bootsnipp.com/snippets/featured/dynamic-form-fields-add-amp-remove-bs3 | https://github.com/Bubelbub
  */
 
 (function( $ ) {
@@ -62,6 +60,25 @@
                 }
             }
         };
+	    
+	var _maskApplyTo = function( e ) {
+		
+	    if( e.data( 'input-mask' ) )
+            {
+                if( $.isFunction($.fn[ 'mask']) )
+                {
+                    e.mask();
+		}
+            }
+
+            if( e.data( 'mask-money' ) )
+            {
+                if( $.isFunction($.fn[ 'maskMoney']) )
+                {
+                    e.maskMoney();
+		}
+            }
+	}
 
         var $values = $.trim( (this.data( 'ag-dynamic-fields-values' ) || '') + '' ).split( settings.valuesSeparator ) || [],
             $valuesLength = $values.length,
@@ -93,6 +110,8 @@
         if( $valuesLength <= 1 )
         {
             $clone.val( $valuesLength ? $values[0] : '' );
+		
+	    _maskApplyTo( $clone );
 
             $inputGroup.prepend( $clone )
                        .append( $btnGroupAdd )
@@ -107,6 +126,8 @@
                 var $cloneAux = $clone.clone();
 
                 $cloneAux.val( $values[i] );
+		    
+		_maskApplyTo( $cloneAux );
 
                 var $inputGroupAux = $inputGroup.clone();
 
@@ -132,22 +153,7 @@
 
             $input.val( '' );
 
-            if( $input.data( 'input-mask' ) )
-            {
-                if( $.isFunction($.fn[ 'themePluginMaskedInput']) )
-                {
-                    var opts = {};
-
-					var pluginOptions = $this.data( 'plugin-options' );
-
-					if( pluginOptions )
-					{
-						opts = pluginOptions;
-					}
-
-					$input.themePluginMaskedInput( opts );
-				}
-            }
+            _maskApplyTo( $input );
 
             $container.find( '.entry:not(:last) .btn-add' )
                  .removeClass( 'btn-add' ).addClass( 'btn-remove' )
