@@ -94,6 +94,7 @@
             );
 
         $container.addClass( settings.containerClass );
+	$inputGroup.addClass( settings.inputGroupClass );
         $btnGroup.addClass( settings.btnGroupClass );
 
         var $btnGroupAdd = $btnGroup,
@@ -113,9 +114,7 @@
 		
 	    _maskApplyTo( $clone );
 
-            $inputGroup.prepend( $clone )
-                       .append( $btnGroupAdd )
-                       .addClass( settings.inputGroupClass );
+            $inputGroup.prepend( $clone ).append( $btnGroupAdd );
 
             $container.html( $inputGroup );
         }
