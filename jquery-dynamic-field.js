@@ -15,11 +15,11 @@
 
     'use strict';
 
-    $.fn.agDynamicFields = function( options ) {
+    $.fn.dpjDynamicFields = function( options ) {
 
         // Defaults
 
-        $.fn.agDynamicFields.defaults = {
+        $.fn.dpjDynamicFields.defaults = {
             valuesSeparator : ',',
             containerClass : '',
             inputGroupClass : '',
@@ -27,9 +27,9 @@
             something: ''
         };
 
-        var settings = $.extend( {}, $.fn.agDynamicFields.defaults, options );
+        var settings = $.extend( {}, $.fn.dpjDynamicFields.defaults, options );
 		
-        $.fn.agDynamicFields.option = function( name, value ) {
+        $.fn.dpjDynamicFields.option = function( name, value ) {
             name = name || false;
             value = value || false;
 
