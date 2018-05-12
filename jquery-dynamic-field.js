@@ -80,10 +80,10 @@
             }
 	}
 
-        var $values = $.trim( (this.data( 'ag-dynamic-fields-values' ) || '') + '' ).split( settings.valuesSeparator ) || [],
+        var $values = $.trim( (this.data( 'dynamic-fields-values' ) || '') + '' ).split( settings.valuesSeparator ) || [],
             $valuesLength = $values.length,
             $clone = this.clone(),
-            $container = $( '<div class="ag-dynamic-fields">' ),
+            $container = $( '<div class="dpj-dynamic-fields">' ),
             $inputGroup = $( '<div class="entry input-group">' ),
             $btnGroup = $(
                 '<span class="input-group-btn">' +
