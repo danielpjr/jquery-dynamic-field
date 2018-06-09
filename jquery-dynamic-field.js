@@ -86,7 +86,7 @@
             $container = $( '<div class="dpj-dynamic-fields">' ),
             $inputGroup = $( '<div class="entry input-group">' ),
             $btnGroup = $(
-                '<span class="input-group-btn">' +
+                '<span class="input-group-append">' +
                 ' <button class="btn" type="button">' +
                 '  <i class="fa"></i>' +
                 ' </button>' +
